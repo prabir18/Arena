@@ -1,5 +1,5 @@
-#ifndef arena.h
-#define arena.h
+#ifndef ARENA_H
+#define ARENA_H
 
 #include <stddef.h>
 #include <stdint.h>

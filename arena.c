@@ -2,12 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct {
-    uint8_t *buffer;
-    size_t size;
-    size_t offset;
-} Arena;
-
 Arena arena_init(size_t size) {
     Arena a;
     a.buffer = malloc(size);
