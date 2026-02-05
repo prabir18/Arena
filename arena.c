@@ -1,4 +1,4 @@
-#include "basic_arena.h"
+#include "arena.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -6,10 +6,10 @@ typedef struct {
     uint8_t *buffer;
     size_t size;
     size_t offset;
-} arena;
+} Arena;
 
-arena arena_init(size_t size) {
-    arena a;
+Arena arena_init(size_t size) {
+    Arena a;
     a.buffer = malloc(size);
     a.size = size;
     a.offset = 0;
@@ -17,7 +17,7 @@ arena arena_init(size_t size) {
     return a;
 }
 
-void *arena_alloc(arena *a, size_t size) {
+void *arena_alloc(Arena *a, size_t size) {
     if (a->offset + size > a->size) {  //incase out of space
         return NULL;
     }
@@ -27,11 +27,11 @@ void *arena_alloc(arena *a, size_t size) {
     return ptr;
 }
 
-void arena_reset(arena *a) {
+void arena_reset(Arena *a) {
     a->offset = 0;
 }
 
-void arena_free(arena *a) {
+void arena_free(Arena *a) {
     free(a->buffer);
     a->buffer = NULL;
     a->size = 0;
